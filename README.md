@@ -20,7 +20,7 @@ Runs the calculation tests with Node's built-in test runner.
 
 ## Before you publish
 
-1. **`config.js`**: set `bookingUrl` (Topmate, Calendly with payments, or a Razorpay page), `youtubeUrl`, and `siteUrl` (the page's public address; shared links use it).
+1. **`config.js`**: set `bookingUrl` (Topmate, Calendly with payments, or a Razorpay page) and `youtubeUrl`. While `bookingUrl` is empty, the booking button opens an email to `bookingEmail` with the visitor's plan link in it. While `youtubeUrl` is empty, the YouTube link is hidden. `siteUrl` is the page's public address, which shared links use.
 2. **Analytics (optional)**: paste a Plausible, Google Analytics or Umami snippet into `<head>` in `index.html`. The page already sends these events to whichever one it finds:
 
    | Event | When |

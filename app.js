@@ -334,27 +334,37 @@ function shareUrl(source) {
   return qs ? `${base}?${qs}` : base;
 }
 
-function bookingUrl() {
-  try {
-    const url = new URL(CONFIG.bookingUrl);
-    url.searchParams.set("utm_source", "cost-planner");
-    url.searchParams.set("utm_medium", "cta");
-    url.searchParams.set("utm_content", state.city);
-    return url.toString();
-  } catch {
-    return "#";
+// A booking page when one is set, otherwise an email with the plan link already in it.
+function bookingLink() {
+  if (CONFIG.bookingUrl) {
+    try {
+      const url = new URL(CONFIG.bookingUrl);
+      url.searchParams.set("utm_source", "cost-planner");
+      url.searchParams.set("utm_medium", "cta");
+      url.searchParams.set("utm_content", state.city);
+      return `href="${url}" target="_blank" rel="noopener"`;
+    } catch {
+      // Fall through to email.
+    }
   }
+  const subject = `1:1 call (${CONFIG.bookingPrice}): my Ireland Master's plan`;
+  const body = `Hi,\n\nI'd like to book a ${CONFIG.bookingLength} 1:1 call about my plan:\n${shareUrl("email")}\n\nTimes that suit me:\n`;
+  return `href="mailto:${CONFIG.bookingEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}"`;
 }
 
 function ctaCard() {
   return `<aside class="card cta" id="book">
     <h2>Want someone to check your plan?</h2>
     <p>On a ${CONFIG.bookingLength} 1:1 call we go through your budget, how much to borrow, and what your visa bank statements need to show.</p>
-    <a class="btn primary big" href="${bookingUrl()}" target="_blank" rel="noopener" data-action="book">Book a 1:1 call (${CONFIG.bookingPrice})</a>
-    <p class="small">Bring this page's link to the call. It keeps your numbers.</p>
-    <a class="yt" href="${CONFIG.youtubeUrl}" target="_blank" rel="noopener" data-action="youtube">
+    <a class="btn primary big" ${bookingLink()} data-action="book">Book a 1:1 call (${CONFIG.bookingPrice})</a>
+    <p class="small">${CONFIG.bookingUrl ? "Bring this page's link to the call. It keeps your numbers." : "This opens an email with your plan's link already in it."}</p>
+    ${
+      CONFIG.youtubeUrl
+        ? `<a class="yt" href="${CONFIG.youtubeUrl}" target="_blank" rel="noopener" data-action="youtube">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8ZM9.7 15.1V8.9l5.8 3.1-5.8 3.1Z" fill="currentColor"/></svg>
-      Watch the cost breakdown on YouTube</a>
+      Watch the cost breakdown on YouTube</a>`
+        : ""
+    }
   </aside>`;
 }
 
