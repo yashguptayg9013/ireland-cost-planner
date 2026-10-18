@@ -1,0 +1,11 @@
+{
+  "name": "ireland-cost-planner",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Plan the full cost of a Master's in Ireland: tuition, rent, living costs and visa funds, in euro and rupees.",
+  "scripts": {
+    "start": "python3 -m http.server 8080",
+    "test": "node --test"
+  }
+}

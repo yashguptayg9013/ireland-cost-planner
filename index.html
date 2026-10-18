@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ireland Master's Cost Planner 2026/27: tuition, rent and visa funds in ₹</title>
+<meta name="description" content="Pick a city and course length to see the tuition, rent, living costs and visa funds for a Master's in Ireland, in euro and rupees. Dublin, Cork, Galway, Limerick, Maynooth and Waterford.">
+<meta name="theme-color" content="#0b7a4b">
+<meta property="og:type" content="website">
+<meta property="og:title" content="What will your Master's in Ireland really cost?">
+<meta property="og:description" content="Tuition, rent, living costs and the visa funds you need to show, in euro and rupees. Free planner for 2026/27.">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b7a4b'/%3E%3Ctext x='32' y='45' font-family='system-ui,sans-serif' font-size='36' font-weight='700' text-anchor='middle' fill='white'%3E%E2%82%AC%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles.css">
+<script type="module" src="app.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="./"><span class="brand-mark" aria-hidden="true">€</span>Ireland Master's Cost Planner</a>
+    <span class="checked">Figures checked <span data-last-checked></span></span>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <p class="eyebrow">For Indian students · 2026/27 intake</p>
+    <h1>What will your Master's in Ireland really cost?</h1>
+    <p class="lede">Pick a city and course length. You'll see tuition, rent, living costs and the money you must show for your visa, in euro and rupees.</p>
+  </section>
+
+  <div class="layout">
+    <form class="controls card" id="controls" autocomplete="off" aria-label="Your plan">
+      <noscript><p class="noscript">This planner needs JavaScript turned on.</p></noscript>
+    </form>
+
+    <section class="results" id="results" aria-live="polite" aria-label="Your costs"></section>
+  </div>
+
+  <footer class="notes" id="notes"></footer>
+</main>
+
+<a class="peek" id="peek" href="#results" hidden></a>
+<div class="tooltip" id="tooltip" role="tooltip" hidden></div>
+</body>
+</html>
