@@ -358,11 +358,12 @@ function ctaCard() {
     <p>On a ${CONFIG.bookingLength} 1:1 call we go through your budget, how much to borrow, and what your visa bank statements need to show.</p>
     <a class="btn primary big" ${bookingLink()} data-action="book">Book a 1:1 call (${CONFIG.bookingPrice})</a>
     <p class="small">${CONFIG.bookingUrl ? "Bring this page's link to the call. It keeps your numbers." : "This opens an email with your plan's link already in it."}</p>
+    ${CONFIG.aboutCallUrl ? `<a class="yt" href="${CONFIG.aboutCallUrl}" target="_blank" rel="noopener" data-action="about_call">What we cover on the call ↗</a><br>` : ""}
     ${
       CONFIG.youtubeUrl
         ? `<a class="yt" href="${CONFIG.youtubeUrl}" target="_blank" rel="noopener" data-action="youtube">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8ZM9.7 15.1V8.9l5.8 3.1-5.8 3.1Z" fill="currentColor"/></svg>
-      Watch the cost breakdown on YouTube</a>`
+      Watch the Ireland vlog on YouTube</a>`
         : ""
     }
   </aside>`;
@@ -442,6 +443,8 @@ results.addEventListener("click", async (e) => {
     track("book_call_click", summaryProps());
   } else if (action === "youtube") {
     track("youtube_click", summaryProps());
+  } else if (action === "about_call") {
+    track("about_call_click", summaryProps());
   }
 });
 

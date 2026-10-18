@@ -29,7 +29,7 @@ Runs the calculation tests with Node's built-in test runner.
    | `plan_changed` | Two seconds after the visitor stops changing options |
    | `whatsapp_share`, `copy_link`, `save_pdf` | Share buttons |
    | `book_call_click` | The booking button (the conversion) |
-   | `youtube_click` | The YouTube link |
+   | `youtube_click`, `about_call_click` | The YouTube link and the link to your call page |
 
 3. **Social preview image (optional)**: WhatsApp and X show a bigger preview with a 1200×630 image. Add `og-image.png` and the line `<meta property="og:image" content="https://…/og-image.png">` (it must be a full URL).
 
